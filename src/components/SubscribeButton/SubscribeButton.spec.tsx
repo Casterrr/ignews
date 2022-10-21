@@ -5,7 +5,7 @@ import { SubscribeButton } from "."
 
 jest.mock('next-auth/react')
 
-//fn é um função vazia do jest. Semelhante a () => {}
+//fn is a void function from jest. It is like this () => {}
 jest.mock('next/router', () => ({
     useRouter: jest.fn().mockReturnValue({
         push: jest.fn()
