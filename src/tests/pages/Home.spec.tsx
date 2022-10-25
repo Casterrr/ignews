@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { stripe } from '../../services/stripe'
-import { getStaticProps } from '../../pages/posts'
+import { getStaticProps } from '../../pages'
 import Home from '../../pages'
 
 jest.mock('next-auth/react', () => {
@@ -24,12 +24,21 @@ describe('Home page', () => {
 
         //whenever it's a promise, use mockResolvedValueOnce
         retriveStripeMoked.mockResolvedValueOnce({
-            id: 'fake-stripe-id',
+            id: 'fake-price-id',
             unit_amount: 1000,
         } as any )
 
         const response = await getStaticProps({})
 
-        console.log(response)
+        expect(response).toEqual(
+            expect.objectContaining({
+                props: {
+                    product: {
+                        priceId: 'fake-price-id',
+                        amount: '$10.00'
+                    }
+                }
+            })
+        )
     })
 })
