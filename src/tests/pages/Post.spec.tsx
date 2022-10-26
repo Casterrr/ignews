@@ -54,7 +54,7 @@ describe('Post page', () => {
                         { type: "heading", text: "My new post" }
                     ],
                     content: [
-                        { type: "paragraph", text: "Post content" }
+                        { type: "paragraph", text: "Post content", spans: [] }
                     ], 
                 },
                 last_publication_date: '04-01-2021'
